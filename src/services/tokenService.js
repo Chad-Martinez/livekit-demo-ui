@@ -1,13 +1,14 @@
 import axios from 'axios';
+import { apiEndpoint } from '../helpers/helpers';
 
-export const generateToken = (userName) => {
-
-    const config = {
-        url: `${import.meta.env.VITE_API_ENDPOINT}/tokens/${userName}`,
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-    return axios(config);
-}
+export const generateToken = (payload) => {
+  const config = {
+    url: `${apiEndpoint}/tokens`,
+    method: 'POST',
+    data: payload,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return axios(config);
+};
