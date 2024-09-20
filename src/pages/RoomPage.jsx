@@ -1,9 +1,9 @@
 import { PreJoin } from '@livekit/components-react';
 import LiveKitConference from '../components/LiveKitConference';
 import '@livekit/components-styles';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { generateRoom } from '../services/roomService';
+import { useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { generateRoom } from '../services/roomService';
 
 const RoomPage = () => {
   const [username, setUserName] = useState('');
@@ -11,17 +11,17 @@ const RoomPage = () => {
     setUserName(values.username);
   };
 
-  const params = useParams();
+  // const params = useParams();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await generateRoom(params.roomId);
-      } catch (error) {
-        console.error('Error generating room ', error);
-      }
-    })();
-  }, [params.roomId]);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       await generateRoom(params.roomId);
+  //     } catch (error) {
+  //       console.error('Error generating room ', error);
+  //     }
+  //   })();
+  // }, [params.roomId]);
 
   return (
     <>
