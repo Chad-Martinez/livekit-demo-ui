@@ -4,12 +4,13 @@ import {
   LiveKitRoom,
   RoomAudioRenderer,
 } from '@livekit/components-react';
+import '@livekit/components-styles';
 import { useParams } from 'react-router-dom';
 import MyVideoConference from '../components/MyVideoConference';
 import { generateToken } from '../services/tokenService';
 import { wsURL } from '../helpers/helpers';
 
-const LiveKitConference = ({}) => {
+const LiveKitConference = ({ username }) => {
   const [token, setToken] = useState('');
   const params = useParams();
 
@@ -18,7 +19,7 @@ const LiveKitConference = ({}) => {
       try {
         const { data } = await generateToken({
           roomName: params.roomId,
-          userName: 'user-1',
+          username,
         });
         const { newToken } = data;
 
@@ -36,7 +37,7 @@ const LiveKitConference = ({}) => {
       token={token}
       serverUrl={wsURL}
       data-lk-theme='default'
-      style={{ height: '100vh' }}
+      style={{ height: '100vh', minWidth: '300px' }}
     >
       <MyVideoConference />
       <RoomAudioRenderer />
