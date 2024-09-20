@@ -22,10 +22,9 @@ const LiveKitConference = ({ username }) => {
           username,
         });
         const { newToken } = data;
-
         if (newToken) setToken(newToken);
       } catch (error) {
-        console.log('Error generating token: ', error);
+        console.error('Error generating token: ', error);
       }
     })();
   }, []);
