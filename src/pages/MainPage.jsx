@@ -11,7 +11,7 @@ const MainPage = () => {
     <>
       <h1>LiveKit Demo</h1>
       <div style={{ display: 'flex', gap: '10px', padding: '10px' }}>
-        <input ref={inputRef} type='text' />
+        <input ref={inputRef} type='text' placeholder='Enter Room Code' />
         <button onClick={enterRoomHandler}>Enter Room</button>
       </div>
     </>
