@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ControlBar,
   LiveKitRoom,
@@ -6,10 +6,10 @@ import {
 } from '@livekit/components-react';
 import '@livekit/components-styles';
 import { useParams } from 'react-router-dom';
-import MyVideoConference from '../components/MyVideoConference';
+import MyVideoConference from './MyVideoConference';
 import { generateToken } from '../services/tokenService';
-import { wsURL } from '../helpers/helpers';
 
+// eslint-disable-next-line react/prop-types
 const LiveKitConference = ({ username }) => {
   const [token, setToken] = useState('');
   const params = useParams();
@@ -27,14 +27,14 @@ const LiveKitConference = ({ username }) => {
         console.error('Error generating token: ', error);
       }
     })();
-  }, []);
+  }, [params.roomId, username]);
 
   return (
     <LiveKitRoom
       video={true}
       audio={true}
       token={token}
-      serverUrl={wsURL}
+      serverUrl={import.meta.env.VITE_WS_URL}
       data-lk-theme='default'
       style={{ height: '100vh', minWidth: '300px' }}
     >

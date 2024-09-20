@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { apiEndpoint } from '../helpers/helpers';
 
 export const generateToken = (payload) => {
   const config = {
-    url: `${apiEndpoint}/tokens`,
+    url: `${import.meta.env.VITE_API_ENDPOINT}/tokens`,
     method: 'POST',
     data: payload,
     headers: {
